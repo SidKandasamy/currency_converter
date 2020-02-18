@@ -3,7 +3,10 @@ import React from 'react'
 function CurrencyRow() {
     return (
         <div>
-            <h1>Currency Row</h1>
+            <input className="input" type="number"/> {/* number type in input meaning only numbers can be input */} 
+            <select>
+                <option value="Hi">Hi</option>
+            </select>
         </div>
     )
 }

@@ -1,0 +1,17 @@
+body{
+  margin:0px;
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  text-align:center;
+
+}
+
+.div{
+  display:flex;
+  justify-content: center;
+}
+
+.input{
+  border: 3px solid #333;
+}
