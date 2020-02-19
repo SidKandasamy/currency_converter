@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import './CurrencyRow';
 import CurrencyRow from './CurrencyRow';
@@ -8,10 +8,22 @@ const BASE_URL = 'https://api.exchangeratesapi.io/latest'
 
 function App() {
 
+  //use state returns an array of options
+
+  const [currencyOptions, setCurrencyOptions] = useState([])
+  console.log(currencyOptions)
+
+
   useEffect(()=> {
       fetch(BASE_URL)
       .then(res=>res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        setCurrencyOptions([data.base, ...Object.keys(data.rates)])
+      })
+      
+
+      //setting currency options to the base(ENG,CZEK), from the data object, then the base property
+
   }, [])
   //useEffect is a function used from the react Library, pass through two arguments one empty array and the other a function
   // fetch base URL, then convert response to json
