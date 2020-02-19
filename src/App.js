@@ -11,7 +11,6 @@ function App() {
   //use state returns an array of options
 
   const [currencyOptions, setCurrencyOptions] = useState([])
-  console.log(currencyOptions)
 //all currency options are now inside of our list
 
   useEffect(()=> {
