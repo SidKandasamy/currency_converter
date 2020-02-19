@@ -19,3 +19,5 @@ function CurrencyRow(props) {
 }
 export default CurrencyRow
 
+//Initally deconstruct currencyOptions  props
+//map over currencyOptions and use JSX code within map to return the options within the option tags
