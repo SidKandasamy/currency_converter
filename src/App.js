@@ -12,7 +12,7 @@ function App() {
 
   const [currencyOptions, setCurrencyOptions] = useState([])
   console.log(currencyOptions)
-
+//all currency options are now inside of our list
 
   useEffect(()=> {
       fetch(BASE_URL)
@@ -30,9 +30,13 @@ function App() {
   return (
       <div>
         <h1>Cash Converter</h1>
-        <CurrencyRow/>
+        <CurrencyRow
+          currencyOptions={currencyOptions}
+        />
         <div className="div">=</div>
-        <CurrencyRow/>
+        <CurrencyRow
+          currencyOptions={currencyOptions} //our CurrencyRow is taking in currencyOptions as props
+        />
       </div>
   );
 }

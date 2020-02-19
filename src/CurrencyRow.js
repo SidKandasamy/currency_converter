@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CurrencyRow() {
+function CurrencyRow(props) {
     return (
         <div>
             <input className="input" type="number"/> {/* number type in input meaning only numbers can be input */} 
