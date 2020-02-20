@@ -9,15 +9,21 @@ const BASE_URL = 'https://api.exchangeratesapi.io/latest'
 function App() {
 
   //use state returns an array of options
-
   const [currencyOptions, setCurrencyOptions] = useState([])
-//all currency options are now inside of our list
+  //all currency options are now inside of our list
+
+  const [fromCurrency, setFromCurrency] = useState() //creating empty state for these two variables
+  const [toCurrency, setToCurrency] = useState()
+
 
   useEffect(()=> {
       fetch(BASE_URL)
       .then(res=>res.json())
       .then(data => {
+        const currency = Object.keys(data.rates)[0]
         setCurrencyOptions([data.base, ...Object.keys(data.rates)])
+        setFromCurrency(data.base)
+        setToCurrency(currency) //sets default currency to the first currency option within the array
       })
       
 
