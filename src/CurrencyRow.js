@@ -5,6 +5,7 @@ function CurrencyRow(props) {
     const {
         currencyOptions
     } = props
+    
 
     return (
         <div>

@@ -20,10 +20,10 @@ function App() {
       fetch(BASE_URL)
       .then(res=>res.json())
       .then(data => {
-        const currency = Object.keys(data.rates)[0]
+        const firstCurrency = Object.keys(data.rates)[0]
         setCurrencyOptions([data.base, ...Object.keys(data.rates)])
         setFromCurrency(data.base)
-        setToCurrency(currency) //sets default currency to the first currency option within the array
+        setToCurrency(firstCurrency) //sets default currency to the first currency option within the array
       })
       
 
@@ -37,10 +37,12 @@ function App() {
         <h1>Cash Converter</h1>
         <CurrencyRow
           currencyOptions={currencyOptions}
+          selectedCurrency={fromCurrency}
         />
         <div className="div">=</div>
         <CurrencyRow
           currencyOptions={currencyOptions} //our CurrencyRow is taking in currencyOptions as props
+          selectedCurrency={toCurrency} //props which are being passed through which are defined in the useEffect method
         />
       </div>
   );
