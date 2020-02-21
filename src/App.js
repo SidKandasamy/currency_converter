@@ -54,4 +54,4 @@ function App() {
 
 export default App;
 
-//onChnage currency gets event from the select options in Currencyrow.js, then we set the target
+//onChnage currency gets event from the select options in Currencyrow.js, then we set the target value. this alters both states we defined earlier e.target.value is whatever the selected option is
