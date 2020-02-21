@@ -38,14 +38,20 @@ function App() {
         <CurrencyRow
           currencyOptions={currencyOptions}
           selectedCurrency={fromCurrency}
+          onChangeCurrency={e => setFromCurrency(e.target.value)}
+
         />
         <div className="div">=</div>
         <CurrencyRow
           currencyOptions={currencyOptions} //our CurrencyRow is taking in currencyOptions as props
           selectedCurrency={toCurrency} //props which are being passed through which are defined in the useEffect method
+          onChangeCurrency={e => setToCurrency(e.target.value)}
+
         />
       </div>
   );
 }
 
 export default App;
+
+//onChnage currency gets event from the select options in Currencyrow.js, then we set the target
