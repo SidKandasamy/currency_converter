@@ -23,7 +23,7 @@ function App() {
         const firstCurrency = Object.keys(data.rates)[0]
         setCurrencyOptions([data.base, ...Object.keys(data.rates)])
         setFromCurrency(data.base)
-        setToCurrency(firstCurrency) //sets default currency to the first currency option within the array
+        setToCurrency(firstCurrency) //sets default currency to the first currency option within the array (here we are setting state)
       })
       
 
@@ -38,14 +38,20 @@ function App() {
         <CurrencyRow
           currencyOptions={currencyOptions}
           selectedCurrency={fromCurrency}
+          onChangeCurrency={e => setFromCurrency(e.target.value)}
+
         />
         <div className="div">=</div>
         <CurrencyRow
           currencyOptions={currencyOptions} //our CurrencyRow is taking in currencyOptions as props
           selectedCurrency={toCurrency} //props which are being passed through which are defined in the useEffect method
+          onChangeCurrency={e => setToCurrency(e.target.value)}
+
         />
       </div>
   );
 }
 
 export default App;
+
+//onChnage currency gets event from the select options in Currencyrow.js, then we set the target value. this alters both states we defined earlier e.target.value is whatever the selected option is
