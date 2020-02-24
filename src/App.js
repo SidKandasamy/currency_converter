@@ -15,6 +15,16 @@ function App() {
   const [fromCurrency, setFromCurrency] = useState() //creating empty state for these two variables
   const [toCurrency, setToCurrency] = useState()
 
+  //setting up amount
+
+  const [amoount, setamount] = useState([1]) //want to weight changes
+  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+
+  //exchange rate
+
+  const [exchangeRate, setExchangeRate] = useState()
+
+  console.log(exchangeRate)
 
   useEffect(()=> {
       fetch(BASE_URL)
@@ -24,6 +34,7 @@ function App() {
         setCurrencyOptions([data.base, ...Object.keys(data.rates)])
         setFromCurrency(data.base)
         setToCurrency(firstCurrency) //sets default currency to the first currency option within the array (here we are setting state)
+        setExchangeRate(data.rates[firstCurrency])
       })
       
 
