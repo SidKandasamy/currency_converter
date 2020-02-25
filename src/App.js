@@ -18,7 +18,7 @@ function App() {
 
   //setting up amount
 
-  const [amount, setamount] = useState([1]) //want to weight changes
+  const [amount, setAmount] = useState([1]) //want to weight changes
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
   //exchange rate
@@ -60,6 +60,8 @@ function App() {
   }, [])
   //useEffect is a function used from the react Library, pass through two arguments one empty array and the other a function
   // fetch base URL, then convert response to json
+
+  
   return (
       <div>
         <h1>Cash Converter</h1>
@@ -68,7 +70,7 @@ function App() {
           selectedCurrency={fromCurrency}
           onChangeCurrency={e => setFromCurrency(e.target.value)}
           amount={fromAmount}
-
+          onChangeAmount={handleAmountChange}
         />
         <div className="div">=</div>
         <CurrencyRow
