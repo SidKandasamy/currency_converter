@@ -23,11 +23,14 @@ function App() {
 
   //exchange rate
 
+  //here we just assign our exhangerate to the data.rates object in array
+
   const [exchangeRate, setExchangeRate] = useState()
+
 
   //variables in creating the actual outputted number to the to input
 
-  let toAmount, fromAmount
+  let toAmount, fromAmount //these are then going to be passed in as props to the component
   
   if (amountInFromCurrency){
     //if the amountInFrom is true (currency is written in the first input)
@@ -64,6 +67,7 @@ function App() {
           currencyOptions={currencyOptions}
           selectedCurrency={fromCurrency}
           onChangeCurrency={e => setFromCurrency(e.target.value)}
+          amount={fromAmount}
 
         />
         <div className="div">=</div>
@@ -71,7 +75,7 @@ function App() {
           currencyOptions={currencyOptions} //our CurrencyRow is taking in currencyOptions as props
           selectedCurrency={toCurrency} //props which are being passed through which are defined in the useEffect method
           onChangeCurrency={e => setToCurrency(e.target.value)}
-
+          amount={toAmount} //props which are passed from the if statement variables
         />
       </div>
   );
