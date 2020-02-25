@@ -30,8 +30,10 @@ function App() {
   let toAmount, fromAmount
   
   if (amountInFromCurrency){
+    //if the amountInFrom is true (currency is written in the first input)
     fromAmount = amount
     toAmount = amount * exchangeRate
+
   } else {
 
     toAmount = amount
