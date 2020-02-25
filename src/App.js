@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import './CurrencyRow';
 import CurrencyRow from './CurrencyRow';
+import { from } from 'rxjs';
 
 //https://exchangeratesapi.io/
 const BASE_URL = 'https://api.exchangeratesapi.io/latest'
@@ -17,14 +18,25 @@ function App() {
 
   //setting up amount
 
-  const [amoount, setamount] = useState([1]) //want to weight changes
+  const [amount, setamount] = useState([1]) //want to weight changes
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
   //exchange rate
 
   const [exchangeRate, setExchangeRate] = useState()
 
-  console.log(exchangeRate)
+  //variables in creating the actual outputted number to the to input
+
+  let toAmount, fromAmount
+  
+  if (amountInFromCurrency){
+    fromAmount = amount
+    toAmount = amount * exchangeRate
+  } else {
+
+    toAmount = amount
+    fromAmount = amount / exchangeRate
+  }
 
   useEffect(()=> {
       fetch(BASE_URL)
