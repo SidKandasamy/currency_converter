@@ -64,14 +64,14 @@ function App() {
 
   function handleFromAmountChange(e){
 
-    setAmount(e.target.vale)// e is the numnber which we manually input into the input, this chnages and sets the value
+    setAmount(e.target.value)// e is the numnber which we manually input into the input, this chnages and sets the value
     setAmountInFromCurrency(true)
 
   }
 
   function handleToAmountChange(e){
 
-    setAmount(e.target.vale)
+    setAmount(e.target.value)
     setAmountInFromCurrency(false)
 
   }

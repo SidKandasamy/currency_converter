@@ -13,7 +13,7 @@ function CurrencyRow(props) {
 
     return (
         <div>
-            <input value={amount} className="input" type="number" onChange={onChangeAmount}/> {/* number type in input meaning only numbers can be input */} 
+            <input className="input" type="number"  value={amount} onChange={onChangeAmount}/> {/* number type in input meaning only numbers can be input */} 
             <select value={selectedCurrency} onChange={onChangeCurrency}> {/*passing onchangecurrency function from props*/}
                 {currencyOptions.map(options => (
                     <option key={options} value={options}>{options}</option>
