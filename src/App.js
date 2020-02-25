@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import './CurrencyRow';
 import CurrencyRow from './CurrencyRow';
+import { from } from 'rxjs';
 
 //https://exchangeratesapi.io/
 const BASE_URL = 'https://api.exchangeratesapi.io/latest'
@@ -17,14 +18,30 @@ function App() {
 
   //setting up amount
 
-  const [amoount, setamount] = useState([1]) //want to weight changes
+  const [amount, setAmount] = useState([1]) //want to weight changes
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
   //exchange rate
 
+  //here we just assign our exhangerate to the data.rates object in array
+
   const [exchangeRate, setExchangeRate] = useState()
 
-  console.log(exchangeRate)
+
+  //variables in creating the actual outputted number to the to input
+
+  let toAmount, fromAmount //these are then going to be passed in as props to the component
+  
+  if (amountInFromCurrency){
+    //if the amountInFrom is true (currency is written in the first input)
+    fromAmount = amount
+    toAmount = amount * exchangeRate
+
+  } else {
+
+    toAmount = amount
+    fromAmount = amount / exchangeRate
+  }
 
   useEffect(()=> {
       fetch(BASE_URL)
@@ -43,6 +60,23 @@ function App() {
   }, [])
   //useEffect is a function used from the react Library, pass through two arguments one empty array and the other a function
   // fetch base URL, then convert response to json
+
+
+  function handleFromAmountChange(e){
+
+    setAmount(e.target.value)// e is the numnber which we manually input into the input, this chnages and sets the value
+    setAmountInFromCurrency(true)
+
+  }
+
+  function handleToAmountChange(e){
+
+    setAmount(e.target.value)
+    setAmountInFromCurrency(false)
+
+  }
+
+
   return (
       <div>
         <h1>Cash Converter</h1>
@@ -50,14 +84,16 @@ function App() {
           currencyOptions={currencyOptions}
           selectedCurrency={fromCurrency}
           onChangeCurrency={e => setFromCurrency(e.target.value)}
-
+          onChangeAmount={handleFromAmountChange}
+          amount={fromAmount}
         />
         <div className="div">=</div>
         <CurrencyRow
           currencyOptions={currencyOptions} //our CurrencyRow is taking in currencyOptions as props
           selectedCurrency={toCurrency} //props which are being passed through which are defined in the useEffect method
           onChangeCurrency={e => setToCurrency(e.target.value)}
-
+          onChangeAmount={handleToAmountChange}
+          amount={toAmount} //props which are passed from the if statement variables
         />
       </div>
   );
