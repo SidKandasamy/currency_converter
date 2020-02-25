@@ -61,7 +61,22 @@ function App() {
   //useEffect is a function used from the react Library, pass through two arguments one empty array and the other a function
   // fetch base URL, then convert response to json
 
-  
+
+  function handleFromAmountChange(e){
+
+    setAmount(e.target.vale)// e is the numnber which we manually input into the input, this chnages and sets the value
+    setAmountInFromCurrency(true)
+
+  }
+
+  function handleToAmountChange(e){
+
+    setAmount(e.target.vale)
+    setAmountInFromCurrency(false)
+
+  }
+
+
   return (
       <div>
         <h1>Cash Converter</h1>
@@ -69,14 +84,15 @@ function App() {
           currencyOptions={currencyOptions}
           selectedCurrency={fromCurrency}
           onChangeCurrency={e => setFromCurrency(e.target.value)}
+          onChangeAmount={handleFromAmountChange}
           amount={fromAmount}
-          onChangeAmount={handleAmountChange}
         />
         <div className="div">=</div>
         <CurrencyRow
           currencyOptions={currencyOptions} //our CurrencyRow is taking in currencyOptions as props
           selectedCurrency={toCurrency} //props which are being passed through which are defined in the useEffect method
           onChangeCurrency={e => setToCurrency(e.target.value)}
+          onChangeAmount={handleToAmountChange}
           amount={toAmount} //props which are passed from the if statement variables
         />
       </div>
