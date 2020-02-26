@@ -72,5 +72,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 https://exchangeratesapi.io/
 https://www.codecademy.com/courses/react-101/lessons/this-state/exercises/components-interacting-recap
+https://css-tricks.com/understanding-react-setstate/
 
 
